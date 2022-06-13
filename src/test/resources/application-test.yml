@@ -1,0 +1,14 @@
+#datasources:
+#  accounts-datasource:
+#    url: jdbc:tc:mysql:8:///accountDB?${jdbcParams}
+#    driverClassName: org.testcontainers.jdbc.ContainerDatabaseDriver
+#  customer-datasource:
+#    url: jdbc:tc:mysql:8:///customerDB?${jdbcParams}
+#    driverClassName: org.testcontainers.jdbc.ContainerDatabaseDriver
+
+r2dbc:
+  datasources:
+    accounts-datasource:
+      r2dbc:tc:mysql:///accounts?TC_IMAGE_TAG=8&TC_INITSCRIPT=db/init_account_database.sql&${jdbcParams}
+    customer-datasource:
+      r2dbc:tc:mysql:///customer?TC_IMAGE_TAG=8&TC_INITSCRIPT=db/init_customer_database.sql&${jdbcParams}

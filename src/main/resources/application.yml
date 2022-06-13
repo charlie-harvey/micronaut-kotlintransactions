@@ -1,0 +1,67 @@
+micronaut:
+  application:
+    name: kotlintransactions
+
+jdbcParams: "sslMode=DISABLED&zeroDateTimeBehavior=CONVERT_TO_NULL&sessionVariables=wait_timeout=1800000"
+
+#datasources:
+#  accounts-datasource:
+#    url: jdbc:mysql://localhost:3306/accounts?${jdbcParams}
+#    driverClassName: com.mysql.cj.jdbc.Driver
+#    username: accounts
+#    password: secret
+#    schema-generate: CREATE_DROP
+#    dialect: MYSQL
+#    sslMode: DISABLED
+#    zeroDateTimeBehavior: CONVERT_TO_NULL
+#  customer-datasource:
+#    url: jdbc:mysql://localhost:3306/customer?${jdbcParams}
+#    driverClassName: com.mysql.cj.jdbc.Driver
+#    username: customer
+#    password: secret
+#    schema-generate: CREATE_DROP
+#    dialect: MYSQL
+#    sslMode: DISABLED
+#    zeroDateTimeBehavior: CONVERT_TO_NULL
+
+r2dbc:
+  datasources:
+    accounts-datasource:
+      schema-generate: CREATE_DROP
+      dialect: MYSQL
+      url: r2dbc:pool:mysql://localhost:3306/accounts?${jdbcParams}
+      username: accounts
+      password: secret
+      ssl: DISABLED
+      zeroDateOption: USE_NULL
+      options:
+        driver: pool
+        protocol: mysql
+        maxSize: 6
+        initialSize: 6
+        maxLifeTime: PT280S
+        maxIdleTime: PT240S
+        maxAcquireTime: PT6S
+        poolName: R2dbcPool-AccountDataSource
+    customer-datasource:
+      schema-generate: CREATE_DROP
+      dialect: MYSQL
+      url: r2dbc:pool:mysql://localhost:3306/customer?${jdbcParams}
+      username: customer
+      password: secret
+      ssl: DISABLED
+      zeroDateOption: USE_NULL
+      options:
+        driver: pool
+        protocol: mysql
+        maxSize: 6
+        initialSize: 6
+        maxLifeTime: PT280S
+        maxIdleTime: PT240S
+        maxAcquireTime: PT6S
+        poolName: R2dbcPool-CustomerDataSource
+
+netty:
+  default:
+    allocator:
+      max-order: 3
