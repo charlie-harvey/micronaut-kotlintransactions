@@ -1,4 +1,4 @@
-package com.example.common
+package com.example.db
 
 import io.micronaut.data.annotation.TypeDef
 import io.micronaut.data.model.DataType

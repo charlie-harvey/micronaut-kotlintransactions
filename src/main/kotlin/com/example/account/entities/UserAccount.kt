@@ -1,6 +1,6 @@
 package com.example.account.entities
 
-import com.example.common.OptimizedUUID
+import com.example.db.OptimizedUUID
 import io.micronaut.core.annotation.Introspected
 import io.micronaut.data.annotation.Id
 import io.micronaut.data.annotation.MappedEntity

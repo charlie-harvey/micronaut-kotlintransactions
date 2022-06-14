@@ -1,6 +1,6 @@
 package com.example.customer.entities
 
-import com.example.common.OptimizedUUID
+import com.example.db.OptimizedUUID
 import io.micronaut.core.annotation.Introspected
 import io.micronaut.data.annotation.*
 import io.micronaut.data.model.naming.NamingStrategies

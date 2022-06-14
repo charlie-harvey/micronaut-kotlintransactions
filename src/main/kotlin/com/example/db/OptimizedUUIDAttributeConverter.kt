@@ -1,6 +1,5 @@
-package com.example.common
+package com.example.db
 
-import com.example.db.UUIDByteArrayConverter
 import io.micronaut.core.convert.ConversionContext
 import io.micronaut.data.model.runtime.convert.AttributeConverter
 import jakarta.inject.Singleton

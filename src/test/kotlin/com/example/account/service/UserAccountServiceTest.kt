@@ -14,7 +14,7 @@ import io.mockk.clearAllMocks
 import kotlinx.coroutines.runBlocking
 import javax.transaction.Transactional
 
-@MicronautTest(startApplication = false)
+@MicronautTest(startApplication = false, transactional = false)
 open class UserAccountServiceTest(
     private val userAccountService: UserAccountService,
     private val userAccountRepository: UserAccountRepository

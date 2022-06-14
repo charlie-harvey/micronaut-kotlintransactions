@@ -12,17 +12,18 @@ group = "com.example"
 val kotlinVersion=project.properties.get("kotlinVersion")
 repositories {
     mavenCentral()
+    maven { url = uri("https://s01.oss.sonatype.org/content/repositories/snapshots/") }
 }
 
 dependencies {
 
-    kapt("io.micronaut.data:micronaut-data-processor")
+    kapt("io.micronaut.data:micronaut-data-processor:3.5.0-SNAPSHOT")
     kapt("io.micronaut:micronaut-http-validation")
 
     implementation("io.micronaut:micronaut-http-client")
     implementation("io.micronaut:micronaut-jackson-databind")
-    implementation("io.micronaut.data:micronaut-data-jdbc")
-    implementation("io.micronaut.data:micronaut-data-r2dbc")
+    implementation("io.micronaut.data:micronaut-data-jdbc:3.5.0-SNAPSHOT")
+    implementation("io.micronaut.data:micronaut-data-r2dbc:3.5.0-SNAPSHOT")
     implementation("io.micronaut.kotlin:micronaut-kotlin-runtime")
     implementation("io.micronaut.sql:micronaut-jdbc-hikari")
     implementation("io.micronaut.liquibase:micronaut-liquibase")
@@ -41,7 +42,7 @@ dependencies {
     runtimeOnly("ch.qos.logback:logback-classic")
     runtimeOnly("dev.miku:r2dbc-mysql")
     runtimeOnly("io.r2dbc:r2dbc-pool:0.9.0.RELEASE")
-    // runtimeOnly("mysql:mysql-connector-java")
+    runtimeOnly("mysql:mysql-connector-java")
 
     implementation("com.github.f4b6a3:uuid-creator:4.6.1")
     implementation("io.github.microutils:kotlin-logging-jvm:2.1.23")

@@ -1,6 +1,6 @@
 package com.example.account.repositories
 
-import com.example.common.OptimizedUUID
+import com.example.db.OptimizedUUID
 import com.example.account.entities.UserAccount
 import io.micronaut.data.annotation.Id
 import io.micronaut.data.model.Page
@@ -41,7 +41,7 @@ interface UserAccountRepository : CoroutineCrudRepository<UserAccount, Optimized
     ): UserAccount?
 
     @Transactional(Transactional.TxType.MANDATORY)
-    suspend fun deleteByUsernameAndSiteId(username: String, siteId: Int)
+    suspend fun deleteByUsernameAndSiteId(username: String, siteId: Int): Int
 
     @Transactional(Transactional.TxType.MANDATORY)
     suspend fun updateByIdInListAndSiteId(id: List<OptimizedUUID>, siteId: Int, applicationLanguage: String): Int

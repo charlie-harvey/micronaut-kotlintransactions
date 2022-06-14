@@ -4,9 +4,8 @@ import at.favre.lib.crypto.bcrypt.BCrypt
 import com.example.account.domain.CreateUserAccountObject
 import com.example.account.entities.UserAccount
 import com.example.account.repositories.UserAccountRepository
-import com.example.common.OptimizedUUID
+import com.example.db.OptimizedUUID
 import com.github.f4b6a3.uuid.UuidCreator
-import io.micronaut.data.exceptions.DataAccessException
 import io.micronaut.transaction.annotation.TransactionalAdvice
 import jakarta.inject.Singleton
 import kotlinx.coroutines.flow.Flow

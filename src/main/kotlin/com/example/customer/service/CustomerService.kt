@@ -1,6 +1,6 @@
 package com.example.customer.service
 
-import com.example.common.OptimizedUUID
+import com.example.db.OptimizedUUID
 import com.example.customer.entities.Customer
 import com.example.customer.repositories.CustomerRepository
 import com.github.f4b6a3.uuid.UuidCreator

@@ -1,6 +1,6 @@
 package com.example.customer.repositories
 
-import com.example.common.OptimizedUUID
+import com.example.db.OptimizedUUID
 import com.example.customer.entities.Customer
 import io.micronaut.data.annotation.Join
 import io.micronaut.data.model.Page

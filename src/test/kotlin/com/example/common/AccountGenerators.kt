@@ -2,6 +2,7 @@ package com.example.common
 
 import com.example.account.domain.CreateUserAccountObject
 import com.example.account.entities.UserAccount
+import com.example.db.OptimizedUUID
 import io.kotest.property.Arb
 import io.kotest.property.arbitrary.*
 import java.time.LocalDateTime
