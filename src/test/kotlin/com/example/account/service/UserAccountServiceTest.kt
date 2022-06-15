@@ -42,14 +42,16 @@ open class UserAccountServiceTest(
         clearAllMocks()
     }
 
+    @Transactional
+    @TransactionalAdvice("accounts-datasource")
     @Test
-    suspend fun findByUsername() {
+    open suspend fun findByUsername() {
         val ua = userAccountEntityArb(
             siteId = validUserAccount.siteId,
             tobedeleted = false,
             active = true,
             username = "pants"
-        ).next();
+        ).next()
         userAccountRepository.save(ua)
 
         userAccountService.findBySiteIdAndUsername(
