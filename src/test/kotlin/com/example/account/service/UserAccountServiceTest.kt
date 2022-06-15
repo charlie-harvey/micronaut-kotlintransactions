@@ -2,7 +2,6 @@ package com.example.account.service
 
 import com.example.account.domain.CreateUserAccountObject
 import com.example.account.entities.UserAccount
-import com.example.account.repositories.UserAccountRepository
 import com.example.common.createUserAccountObjectArb
 import com.example.common.userAccountEntityArb
 import io.kotest.core.spec.style.AnnotationSpec
@@ -12,12 +11,10 @@ import io.micronaut.test.extensions.kotest.annotation.MicronautTest
 import io.micronaut.transaction.annotation.TransactionalAdvice
 import io.mockk.clearAllMocks
 import kotlinx.coroutines.runBlocking
-import javax.transaction.Transactional
 
 @MicronautTest(startApplication = false, transactional = false)
 open class UserAccountServiceTest(
-    private val userAccountService: UserAccountService,
-    private val userAccountRepository: UserAccountRepository
+    private val userAccountService: UserAccountService
 ) : AnnotationSpec() {
 
     private lateinit var createUserAccountObject: CreateUserAccountObject
@@ -25,8 +22,6 @@ open class UserAccountServiceTest(
 
     private val siteId = 10000
 
-    @Transactional
-    @TransactionalAdvice("accounts-datasource")
     @BeforeEach
     open fun beforeEach() = runBlocking {
         createUserAccountObject = createUserAccountObjectArb(siteId = siteId, grade = "4").single()
@@ -34,16 +29,12 @@ open class UserAccountServiceTest(
         validUserAccount = userAccountService.createUserAccount(createUserAccountObject)
     }
 
-    @Transactional
-    @TransactionalAdvice("accounts-datasource")
     @AfterEach
     open fun afterEach() = runBlocking {
         userAccountService.deleteByUsernameAndSiteId(createUserAccountObject.username, createUserAccountObject.siteId)
         clearAllMocks()
     }
 
-    @Transactional
-    @TransactionalAdvice("accounts-datasource")
     @Test
     open suspend fun findByUsername() {
         val ua = userAccountEntityArb(
@@ -52,7 +43,7 @@ open class UserAccountServiceTest(
             active = true,
             username = "pants"
         ).next()
-        userAccountRepository.save(ua)
+        userAccountService.save(ua)
 
         userAccountService.findBySiteIdAndUsername(
             siteId = validUserAccount.siteId,

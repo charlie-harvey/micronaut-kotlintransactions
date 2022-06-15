@@ -98,4 +98,8 @@ open class UserAccountService(
     open suspend fun updateUserAccounts(userAccounts: List<UserAccount>) =
         userAccountRepository.updateAll(userAccounts)
 
+    @Transactional
+    @TransactionalAdvice("accounts-datasource")
+    open suspend fun save(userAccount: UserAccount) =
+        userAccountRepository.save(userAccount)
 }
